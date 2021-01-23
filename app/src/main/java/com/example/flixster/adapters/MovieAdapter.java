@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.flixster.MainActivity;
 import com.example.flixster.Models.Movie;
 import com.example.flixster.R;
@@ -28,6 +29,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         this.context = context;
         this.movies = movies;
     }
+
     // Usually involves inflating a layout from XML and returning the holder
     @NonNull
     @Override
@@ -69,7 +71,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             String imageURL;
-            // If the phone is in landscape then return the backdroppath
+
+            // If the phone is in landscape then return the backdropPath
             // Else return poster path
             if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
                 imageURL = movie.getBackdropPath();

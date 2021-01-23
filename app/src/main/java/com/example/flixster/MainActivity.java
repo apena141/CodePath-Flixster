@@ -1,12 +1,16 @@
 package com.example.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.Models.Movie;
@@ -43,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set a layout manager on the recycler view
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
+
+        // Adds vertical lines between each item
+        rvMovies.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         AsyncHttpClient client = new AsyncHttpClient();
 
