@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="286dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
@@ -35,14 +35,15 @@
 
     <TextView
         android:id="@+id/tvOverview"
-        android:layout_width="283dp"
-        android:layout_height="71dp"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/idPoster"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
