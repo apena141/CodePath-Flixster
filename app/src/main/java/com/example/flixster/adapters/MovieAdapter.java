@@ -1,7 +1,9 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
+import com.example.flixster.DetailActivity;
 import com.example.flixster.MainActivity;
 import com.example.flixster.Models.Movie;
 import com.example.flixster.R;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -85,6 +90,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 imageURL = movie.getPosterPath();
             }
             Glide.with(context).load(imageURL).into(tvPoster);
+
+            // Set a click listener on the whole container
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Create new intent
+                    Intent i = new Intent(context, DetailActivity.class);
+                    // Send the movie object the user clicks to the new intent
+                    // Casting it to Parcelable so that we can pass all the information regarding
+                    // the movie.
+                    i.putExtra("movie", Parcels.wrap(movie));
+                    // Start the activity
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }
