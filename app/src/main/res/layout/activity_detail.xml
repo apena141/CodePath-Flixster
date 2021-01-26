@@ -9,6 +9,11 @@
     android:orientation="vertical"
     >
 
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
@@ -30,5 +35,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:text="When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity.&quot;" />
-</LinearLayout>
+        tools:text="When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity" />
+    ></LinearLayout>
