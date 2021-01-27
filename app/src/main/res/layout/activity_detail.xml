@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detail_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity"
+    android:background="#232121"
     android:orientation="vertical"
-    >
+    android:transitionName="object_image"
+    tools:context=".DetailActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player"
@@ -18,22 +19,33 @@
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
+        android:transitionName="titleTransition"
         tools:text="Chapter number 2" />
+
 
     <RatingBar
         android:id="@+id/ratingBar"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
         android:isIndicator="true"
-        android:numStars="10" />
+        android:numStars="10"
+        android:progressTint="#FFFFFF" />
 
     <TextView
         android:id="@+id/overviewTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="TextView"
-        tools:text="When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans, Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity" />
-    ></LinearLayout>
+        android:textColor="#FFFFFF"
+        android:transitionName="overviewTransition"
+        tools:text="When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans,
+        Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity" />
+    >
+</LinearLayout>

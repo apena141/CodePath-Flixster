@@ -1,14 +1,10 @@
 package com.example.flixster;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Application;
-import android.os.Build;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.util.Log;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -21,7 +17,6 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.parceler.Parcels;
-import org.w3c.dom.Text;
 
 import okhttp3.Headers;
 
@@ -39,6 +34,9 @@ public class DetailActivity extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        getWindow().setEnterTransition(new Explode());
+        getWindow().setExitTransition(new Explode());
         setContentView(R.layout.activity_detail);
         tvTitle = findViewById(R.id.titleTextView);
         tvOverview = findViewById(R.id.overviewTextView);
@@ -69,7 +67,7 @@ public class DetailActivity extends YouTubeBaseActivity {
 
             @Override
             public void onFailure(int i, Headers headers, String s, Throwable throwable) {
-
+                Log.e("DetailActivity", "Failed to make JSON request", throwable);
             }
         });
     }
