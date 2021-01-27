@@ -23,6 +23,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### Notes
 Issue: Failed to make network request to api.nytimes.com
+
 Fix: Switch DNS to Google's public DNS
 
 ### Open-source libraries used
