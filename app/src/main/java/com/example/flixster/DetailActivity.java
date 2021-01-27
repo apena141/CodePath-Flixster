@@ -78,7 +78,12 @@ public class DetailActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailActivity", "onSuccess");
-                youTubePlayer.cueVideo(youtubeKey);
+                if(ratingBar.getRating() > 5.0){
+                    youTubePlayer.loadVideo(youtubeKey);
+                }
+                else{
+                    youTubePlayer.cueVideo(youtubeKey);
+                }
             }
 
             @Override
