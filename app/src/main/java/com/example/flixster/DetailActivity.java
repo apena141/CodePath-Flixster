@@ -3,12 +3,16 @@ package com.example.flixster;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.util.Log;
+import android.view.Window;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.example.flixster.Models.Movie;
+import com.example.flixster.databinding.ActivityDetailBinding;
+import com.example.flixster.models.Movie;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -30,23 +34,22 @@ public class DetailActivity extends YouTubeBaseActivity {
     YouTubePlayerView youTubePlayerView;
     private static final String YOUTUBE_API_KEY = YTAPIKEY;
     private static final String videoURL = "https://api.themoviedb.org/3/movie/%d/videos?api_key=" + MOVIEAPIKEY;
+    private ActivityDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         getWindow().setEnterTransition(new Explode());
         getWindow().setExitTransition(new Explode());
-        setContentView(R.layout.activity_detail);
-        tvTitle = findViewById(R.id.titleTextView);
-        tvOverview = findViewById(R.id.overviewTextView);
-        ratingBar = findViewById(R.id.ratingBar);
-        youTubePlayerView = findViewById(R.id.player);
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
-        ratingBar.setRating((float) movie.getRating());
+        binding.setVariable(BR.movie, movie);
+
+        tvTitle = binding.titleTextView;
+        tvOverview = binding.overviewTextView;
+        binding.ratingBar.setRating((float) movie.getRating());
+        youTubePlayerView = binding.player;
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(String.format(videoURL, movie.getMovieId()), new JsonHttpResponseHandler() {
@@ -78,7 +81,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailActivity", "onSuccess");
-                if(ratingBar.getRating() > 5.0){
+                if(binding.ratingBar.getRating() > 5.0){
                     youTubePlayer.loadVideo(youtubeKey);
                 }
                 else{
