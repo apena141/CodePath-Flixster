@@ -9,7 +9,7 @@ apiKeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-
+    dataBinding.enabled = true
     defaultConfig {
         buildConfigField("String", "MOVIEAPIKEY", apiKeyProperties['MOVIEAPIKEY'])
         buildConfigField("String", "YTAPIKEY", apiKeyProperties['YTAPIKEY'])
