@@ -14,11 +14,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flixster.DetailActivity;
-import com.example.flixster.Models.Movie;
+import com.example.flixster.databinding.ItemMovieBinding;
+import com.example.flixster.models.Movie;
 import com.example.flixster.R;
 
 import org.parceler.Parcels;
@@ -50,7 +52,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         Log.d("MovieAdapter", "onBindViewHolder" + position);
         // Get the movie at the passed in position
         Movie movie = movies.get(position);
-        // Bind the movie data into the VH
+        /*holder.binding.setMovie(movie);
+        holder.binding.executePendingBindings();
+         */
         holder.bind(movie);
     }
 
@@ -61,6 +65,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        //final ItemMovieBinding binding;
         RelativeLayout container;
         TextView tvTitle;
         TextView tvOverview;
@@ -68,10 +73,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            /*
+            binding = ItemMovieBinding.bind(itemView);
+            tvTitle = binding.tvTitle;
+            tvOverview = binding.tvOverview;
+            tvPoster = binding.idPoster;
+            container = binding.movieContainer;
+            */
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             tvPoster = itemView.findViewById(R.id.idPoster);
             container = itemView.findViewById(R.id.movieContainer);
+
         }
 
         public void bind(Movie movie) {
