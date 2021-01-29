@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.databinding.ActivityDetailBinding;
+import com.example.flixster.databinding.ActivityMainBinding;
 import com.example.flixster.models.Movie;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -81,7 +82,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailActivity", "onSuccess");
-                if(binding.ratingBar.getRating() > 5.0){
+                if(binding.getMovie().getRating() > 5.0){
                     youTubePlayer.loadVideo(youtubeKey);
                 }
                 else{
