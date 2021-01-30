@@ -9,7 +9,7 @@ apiKeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-    dataBinding.enabled = true
+    android.buildFeatures.dataBinding = true
     defaultConfig {
         buildConfigField("String", "MOVIEAPIKEY", apiKeyProperties['MOVIEAPIKEY'])
         buildConfigField("String", "YTAPIKEY", apiKeyProperties['YTAPIKEY'])
@@ -35,7 +35,8 @@ android {
 }
 
 dependencies {
-
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
+    implementation 'jp.co.cyberagent.android:gpuimage:2.0.4'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -48,6 +49,6 @@ dependencies {
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.codepath.libraries:asynchttpclient:2.0.0'
 }
