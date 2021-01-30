@@ -1,7 +1,5 @@
 package com.example.flixster;
 
-import android.app.Activity;
-import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -14,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixster.adapters.MovieAdapter;
 import com.example.flixster.databinding.ActivityMainBinding;
 import com.example.flixster.models.Movie;
-import com.example.flixster.adapters.MovieAdapter;
-//import com.example.flixster.databinding.ActivityMainBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        RecyclerView rvMovies = binding.recyclerViewMovies;
+        RecyclerView rvMovies = binding.recyclerView;
         movies = new ArrayList<>();
         // Create an adapter
         MovieAdapter movieAdapter = new MovieAdapter(this, movies);
