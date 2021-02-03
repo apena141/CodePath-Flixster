@@ -46,9 +46,6 @@ Flixster is an app that allows users to browse movies from the [The Movie Databa
 <img src="https://github.com/apena141/CodePath-Flixster/blob/main/landscape.gif" width=750>
 
 ### Notes
-Issue: Failed to make network request to api.nytimes.com
-
-Fix: Switch DNS to Google's public DNS
 
 ### Open-source libraries used
 
